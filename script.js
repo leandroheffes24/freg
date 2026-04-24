@@ -197,7 +197,7 @@
       const formData = new FormData(contactForm);
 
 try {
-  const res = await fetch('https://formsubmit.co/ajax/leandroheffes2408@gmail.com', {
+  const res = await fetch('https://formsubmit.co/ajax/crfregis@hotmail.com.ar', {
     method: 'POST',
     headers: { 'Accept': 'application/json' },
     body: formData,
