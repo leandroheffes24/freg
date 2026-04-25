@@ -69,13 +69,16 @@
     });
   });
 
-  // ---------- Hero reveal on load ----------
-  window.addEventListener('load', () => {
-    const heroElements = document.querySelectorAll('.hero .reveal');
-    heroElements.forEach((el, i) => {
-      setTimeout(() => el.classList.add('in-view'), 100 + i * 100);
-    });
+  // ---------- Hero: prefers-reduced-motion ----------
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll(
+    '.hl-line, .hero-rule, .hero-bottom, .hero-coords, .hero-index, .hero-tagline, .scroll-hint'
+  ).forEach((el) => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.animation = 'none';
   });
+}
 
   // ---------- Intersection Observer for sections ----------
   const revealTargets = [
@@ -135,8 +138,6 @@
     const whatsappLinks = document.querySelectorAll('[data-whatsapp]');
     whatsappLinks.forEach((link) => {
       link.addEventListener('click', () => {
-        // Placeholder for analytics tracking
-        // window.gtag && gtag('event', 'whatsapp_click', { location: link.id || 'unknown' });
         if (window.dataLayer) {
           window.dataLayer.push({ event: 'whatsapp_click' });
         }
@@ -251,20 +252,6 @@ try {
     );
 
     sections.forEach((section) => sectionObserver.observe(section));
-  }
-
-  // ---------- Parallax hero decoration (subtle) ----------
-  const heroVisual = document.querySelector('.hero-visual svg');
-  if (heroVisual && window.matchMedia('(min-width: 1024px)').matches) {
-    window.addEventListener(
-      'mousemove',
-      (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 10;
-        const y = (e.clientY / window.innerHeight - 0.5) * 10;
-        heroVisual.style.transform = `translate(${x}px, ${y}px)`;
-      },
-      { passive: true }
-    );
   }
 
   // ---------- Keyboard accessibility: close mobile nav on Escape ----------
