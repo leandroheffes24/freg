@@ -1796,6 +1796,95 @@ strong {
   }
 }
 
+
+
+/* ===========================
+   INTRO COUNTER
+   =========================== */
+#heroIntro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+.intro-counter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  padding: clamp(0.5rem, 2vw, 2rem);
+  line-height: 0.9;
+  gap: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(5rem, 20vw, 15rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: var(--bg);
+  font-variant-numeric: tabular-nums;
+}
+
+.intro-counter {
+  animation: counterEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes counterEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.digit-slot {
+  display: inline-block;
+  width: 0.62em;
+  height: 0.9em;
+  overflow: hidden;
+  position: relative;
+}
+
+.digit-slot span {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.digit-slot .d-out {
+  animation: dOut 90ms ease-in forwards;
+}
+
+.digit-slot .d-in {
+  animation: dIn 90ms ease-out forwards;
+}
+
+@keyframes dOut {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-115%); }
+}
+
+@keyframes dIn {
+  from { transform: translateY(115%); }
+  to   { transform: translateY(0); }
+}
+
+#introWipe {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 0;
+  background: var(--bg);
+  transition: height 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+#heroIntro.exiting {
+  transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+  transform: translateY(-100%);
+}
+
 /* ---------- ACCESSIBILITY ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
