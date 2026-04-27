@@ -87,9 +87,9 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     '.service-card',
     '.why-card',
     '.process-step',
-    '.about-media',
-    '.about-content',
-    '.testimonial-card',
+    '.about-head',
+    '.about-body',
+    '.about-quote',
     '.contact-whatsapp',
     '.contact-form',
   ];
